@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Previsão do Tempo</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <div class="app-container">
+        <div id="datetime" class="datetime-display">--/--/----, 00:00</div>
+
+        <header class="search-header">
+            <div class="search-box">
+                <input type="text" id="search-input" placeholder="Buscar cidade...">
+                <button id="search-btn"><i class="fas fa-search"></i></button>
+            </div>
+        </header>
+
+        <main id="weather-body" class="weather-body hidden">
+            <section class="current-weather">
+                <h1 id="city-name" class="location-title">Cidade</h1>
+                
+                <div class="weather-status-wrapper">
+                    <img id="weather-icon" src="" alt="Status do tempo">
+                    <p id="weather-desc" class="weather-desc">Ensolarado</p>
+                </div>
+
+                <div class="temp-container">
+                    <span id="current-temp">--</span><span class="degree-symbol">°</span>
+                </div>
+            </section>
+
+            <section class="timeline-section">
+                <div class="timeline-item">
+                    <span class="timeline-label">Antes</span>
+                    <img id="time-before-icon" src="" alt="Antes">
+                    <span id="time-before-temp" class="timeline-temp">--°</span>
+                </div>
+                <div class="timeline-item active-time">
+                    <span class="timeline-label">Agora</span>
+                    <img id="time-now-icon" src="" alt="Agora">
+                    <span id="time-now-temp" class="timeline-temp">--°</span>
+                </div>
+                <div class="timeline-item">
+                    <span class="timeline-label">Depois</span>
+                    <img id="time-after-icon" src="" alt="Depois">
+                    <span id="time-after-temp" class="timeline-temp">--°</span>
+                </div>
+            </section>
+
+            <div class="btn-wrapper">
+                <button id="toggle-forecast-btn" class="forecast-btn">
+                    Ver Previsão <i class="fas fa-chevron-down"></i>
+                </button>
+            </div>
+
+            <section id="forecast-section" class="forecast-section hidden-forecast">
+                <div id="forecast-container" class="forecast-container">
+                    </div>
+            </section>
+        </main>
+        
+        <div id="error-message" class="error-message hidden">
+            <p>Cidade não encontrada. Tente novamente.</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

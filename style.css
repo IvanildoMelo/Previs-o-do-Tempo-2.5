@@ -1,0 +1,247 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+    background: linear-gradient(to bottom, #3a6073, #3a7bd5);
+    background-attachment: fixed;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    color: #ffffff;
+    padding: 60px 15px 30px 15px; /* Aumentado padding topo por causa da data */
+    position: relative;
+}
+
+.app-container {
+    width: 100%;
+    max-width: 420px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Data e Hora no Canto Superior Esquerdo */
+.datetime-display {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.85);
+    letter-spacing: 0.5px;
+}
+
+/* Barra de Busca */
+.search-header {
+    width: 100%;
+    margin-top: 10px;
+}
+
+.search-box {
+    display: flex;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(8px);
+    border-radius: 50px;
+    padding: 6px 6px 6px 18px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.search-box input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #ffffff;
+    font-size: 1rem;
+}
+
+.search-box input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.search-box button {
+    background: #ffffff;
+    color: #3a7bd5;
+    border: none;
+    width: 38px;
+    height: 38px;
+    border-radius: 50px;
+    cursor: pointer;
+}
+
+/* Utilitários */
+.hidden { display: none !important; }
+.hidden-forecast { display: none !important; }
+
+/* Clima Atual */
+.current-weather {
+    text-align: center;
+    padding: 10px 0 5px 0;
+}
+
+.location-title {
+    font-size: 2.4rem;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.weather-status-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#weather-icon {
+    width: 100px;
+    height: 100px;
+    margin-bottom: -10px;
+}
+
+.weather-desc {
+    font-size: 1.4rem;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.9);
+    text-transform: capitalize;
+}
+
+.temp-container {
+    font-size: 7rem;
+    font-weight: 300;
+    line-height: 1;
+    margin-top: 10px;
+    display: inline-flex;
+    justify-content: center;
+    position: relative;
+    padding-right: 20px;
+}
+
+.degree-symbol {
+    position: absolute;
+    right: 0;
+    top: 5px;
+    font-size: 4.5rem;
+    font-weight: 300;
+}
+
+/* NOVA SEÇÃO: Estilo da Linha do Tempo (Antes, Agora, Depois) */
+.timeline-section {
+    display: flex;
+    justify-content: space-between;
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    padding: 15px;
+    margin: 10px 0;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.timeline-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+    opacity: 0.6;
+    transition: transform 0.3s, opacity 0.3s;
+}
+
+.timeline-item.active-time {
+    opacity: 1;
+    transform: scale(1.1);
+    font-weight: 600;
+}
+
+.timeline-label {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.active-time .timeline-label {
+    color: #ffffff;
+}
+
+.timeline-item img {
+    width: 45px;
+    height: 45px;
+}
+
+.timeline-temp {
+    font-size: 1.1rem;
+}
+
+/* Botão de Alternância */
+.btn-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.forecast-btn {
+    background: rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 10px 24px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Card de Previsão de 5 Dias */
+.forecast-container {
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 28px;
+    padding: 10px 22px;
+    display: flex;
+    flex-direction: column;
+}
+
+.forecast-item {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    align-items: center;
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.forecast-item:last-child {
+    border-bottom: none;
+}
+
+.forecast-item .day-name {
+    text-align: left;
+    font-size: 1.2rem;
+    font-weight: 500;
+    text-transform: capitalize;
+}
+
+.forecast-item img {
+    width: 35px;
+    height: 35px;
+    justify-self: center;
+}
+
+.forecast-item .forecast-temp {
+    text-align: right;
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+.error-message {
+    text-align: center;
+    background: rgba(239, 68, 68, 0.25);
+    border: 1px solid rgba(239, 68, 68, 0.4);
+    padding: 14px;
+    border-radius: 16px;
+}
